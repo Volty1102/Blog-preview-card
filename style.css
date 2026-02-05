@@ -1,1 +1,211 @@
 
+:root {
+    /* TYPOGRAPHY */
+    --ff: "Figtree", sans-serif;
+
+    --fs-200: 0.75rem;
+    --fs-300: 0.875rem;
+    --fs-400: 1rem;
+    --fs-500: 1.25rem;
+    --fs-600: 1.5rem;
+    
+
+    --fw-500: 500;
+    --fw-800: 800;
+
+    /* SPACING */
+    --small-100: 0.25rem;
+    --small-200: 0.5rem;
+    --medium-400: 0.75rem;
+    --large-300: 1.25rem;
+    --large-400: 1.5rem;
+    --large-600: 2rem;
+
+    /* COLORS */
+    --primary-bg: hsl(47, 88%, 63%);
+    --white-bg: hsl(0, 0%, 100%);
+
+    --neutral-color-500: hsl(0, 0%, 42%);
+    --neutral-color-950: hsl(0, 0%, 7%);
+
+    /* BORDER RADIUS*/
+    --border-radius: var(--large-400, 24px);
+
+}
+
+/* RESET */
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    line-height: 1.5;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    font-style: italic;
+}
+
+h1,
+h2,
+h3 {
+    text-wrap: balance;
+    margin: 0;
+}
+
+p {
+    /* text-wrap: pretty; */
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* COMPOSITION */
+body {
+    font-family: var(--ff);
+    font-size: var(--fs-300);
+    font-weight: var(--fw-500);
+    background-color: var(--primary-bg);
+    color: var(--neutral-color-950);
+}
+
+/* UTILITIES */
+.wrapper {
+    /* width: min(100% - 4rem, 60ch);
+    margin-inline: auto; */
+    height: 100vh;
+}
+
+.flow > * + * {
+    margin-block-start: var(--flow-space, var(--medium-400));
+}
+
+.grid-center {
+    display: grid;
+    place-items: center;
+}
+
+.bold {
+    font-weight: var(--fw-800);
+}
+
+/* BLOCKS */
+
+.card {
+    padding: 1.5rem;
+    width: 20.4375rem;
+    background-color: var(--white-bg);
+    border: 1px solid;
+    border-radius: var(--border-radius);
+    /* box-shadow: [inset] <offset-x> <offset-y> <blur-radius> <spread-radius> <color>; */
+    /* box-shadow: inset -8px -12px var(--neutral-color-950); */
+    position: relative;
+}
+
+.card::after {
+    content: '';
+    display: block;
+    inset: 12px 0 -12px 8px;
+    width: 20.4375rem;
+    border-radius: var(--border-radius);
+    position: absolute;
+    background-color: var(--neutral-color-950);
+    z-index: -1;
+}
+
+
+
+.card__img {
+    border-radius: calc(var(--border-radius) - calc(var(--border-radius) / 2));
+}
+
+.card__content {
+    margin-block: var(--large-400);
+}
+
+.card__content .tag {
+    font-size: var(--fs-200);
+    background-color: var(--primary-bg);
+    display: inline-block;
+    padding: var(--small-100) var(--small-200);
+    border-radius: var(--small-100);
+}
+
+.card__content .publication {
+    font-size: var(--fs-200);
+}
+
+.card__content .heading {
+    font-size: var(--fs-500);
+}
+
+.card__content .heading:hover,
+.card__content .heading:focus-visible,
+.card__content .heading:active {
+    color: var(--primary-bg);
+}
+
+.card__content .description {
+    --flow-space: var(--large-300);
+
+    color: var(--neutral-color-500);
+}
+
+.card__author {
+    display: flex;
+    gap: var(--medium-400);
+} 
+
+.card__author .name {
+    align-self: center;
+    font-size: var(--fs-200);
+}
+
+.card__author img {
+    width: var(--large-600);
+}
+
+/* EXCEPTIONS */
+
+
+/* MEDIA QUERIES */
+
+@media (width > 40rem) {
+    body {
+        font-size: var(--fs-400);
+    }
+
+    .card {
+        width: 24rem;
+    }
+
+    .card::after {
+        width: 24rem;
+    }
+
+    .card__content .tag {
+        font-size: var(--fs-300);
+    }
+
+    .card__content .publication {
+        font-size: var(--fs-300);
+    }
+
+    .card__content .heading {
+        font-size: var(--fs-600);
+    }
+
+    .card__author .name {
+        font-size: var(--fs-300);
+    }
+
+}
